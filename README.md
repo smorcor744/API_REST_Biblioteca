@@ -40,11 +40,22 @@ Desarrollar una API REST en Kotlin utilizando Spring Boot que permita realizar o
 
 2. Configurar el archivo `application.properties`:
     ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/biblioteca_db
-    spring.datasource.username=root
-    spring.datasource.password=password
-    spring.jpa.hibernate.ddl-auto=update
-    spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+    # Configuracion para el acceso a la Base de Datos
+   spring.jpa.hibernate.ddl-auto=create
+   spring.jpa.properties.hibernate.globally_quoted_identifiers=true
+   spring.jpa.show-sql=true
+   
+   # Puerto donde escucha el servidor una vez se inicie
+   server.port=8080
+   
+   # Datos de conexion con la base de datos MySQL
+   spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+   spring.datasource.url=jdbc:mysql://localhost:3306/libreria_bd
+   spring.datasource.username=root
+   spring.datasource.password=
+
+# Para popular la BBDD
+spring.jpa.properties.javax.persistence.sql-load-script-source=sql/datos-prueba.sql
     ```
 
 ---
